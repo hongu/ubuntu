@@ -182,25 +182,25 @@ import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc5
     + 추천 패키지 
         https://packagecontrol.io/    
 
-    ***ARM Assembly***
-    ***AngularJS***
-    ***SublimeCodeIntel***
-    ***SidebarEnhancements***
-    ***DocBlockr***
-    ***Bracket Highlighter***
-    ***Emmet***
-    ***Git***
-    ***Gist***
-    ***Markdown Editing***
-    ***Markdown Preview***
-    ***SmartMarkdown***
-    ***Nodejs***
-    ***JSLint***
-    ***SublimeLinter***
-    ***Terminal***
-    ***ConvertToUTF8***
-    ***Codec33***
-    ***IMEsupport*** --- 리눅스에서는 설치되지 않음 
+    ***ARM Assembly***  
+    ***AngularJS***  
+    ***SublimeCodeIntel***  
+    ***SidebarEnhancements***  
+    ***DocBlockr***  
+    ***Bracket Highlighter***  
+    ***Emmet***  
+    ***Git***  
+    ***Gist***  
+    ***Markdown Editing***  
+    ***Markdown Preview***  
+    ***SmartMarkdown***  
+    ***Nodejs***  
+    ***JSLint***  
+    ***SublimeLinter***  
+    ***Terminal***  
+    ***ConvertToUTF8***  
+    ***Codec33***  
+    ***IMEsupport*** --- 리눅스에서는 설치되지 않음   
 
 - 사용자 설정 
     Preferences -> Setting - User 
