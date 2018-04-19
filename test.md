@@ -113,19 +113,19 @@ ex) >c 1\r\n
 ----------
 >리더의 TAG ID 값을 읽어오거나 쓸때 사용하는 명령어
               
-|      | Header | Command Code | SP | Parameter1 | SP | Parameter2 | Trailer |
-|:--------|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|
-| byte | 1 | 1 | 1 | Variable | 1 | Variable | 2 |
-| HEX | 0x3E |  | 0x20 |  | 0x20 | | 0x0D 0x0A | 
-| ASCII | > |  |  | | |  | \r \n |
+|      | Header | Command Code | SP | Parameter | Trailer |
+|:--------|:--------:|:--------:|:--------:|:--------:|:--------:|
+| byte | 1 | 1 | 1 | Variable | 2 |
+| HEX | 0x3E |  | 0x20 |   | 0x0D 0x0A | 
+| ASCII | > |  |  |  | \r \n |
 ```
 ex) >w 3F13DA3300000000\r\n
 ```
 
 * Reader Command list
 
-| No. | Code(ASCII) | Code(HEX) | Name | Parameter |
-|:--------|:--------:|:--------:|:--------:|:--------:|
-| 1 | f | 0x66 | Inventory  | (1) | 
-| 2 | r | 0x72 | Memory Read | (1) | 
-| 3 | w | 0x77 | Memory Write | (2) | 
+| No. | Code(ASCII) | Code(HEX) | Name | 
+|:--------|:--------:|:--------:|:--------:|
+| 1 | f | 0x66 | Inventory  | 
+| 2 | r | 0x72 | Memory Read | 
+| 3 | w | 0x77 | Memory Write | 
