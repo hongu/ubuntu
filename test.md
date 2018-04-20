@@ -118,6 +118,7 @@ ex) >c 1\r\n
 | byte | 1 | 1 | 1 | Variable | 2 |
 | HEX | 0x3E |  | 0x20 |   | 0x0D 0x0A | 
 | ASCII | > |  |  |  | \r \n |
+
 ```
 ex) >w 3F13DA3300000000\r\n
 ```
@@ -126,6 +127,46 @@ ex) >w 3F13DA3300000000\r\n
 
 | No. | Code(ASCII) | Code(HEX) | Name | 
 |:--------|:--------:|:--------:|:--------:|
-| 1 | f | 0x66 | Inventory  | 
+| 1 | f | 0x66 | Inventory Start | 
 | 2 | r | 0x72 | Memory Read | 
 | 3 | w | 0x77 | Memory Write | 
+| 4 | s | 0x73 | Inventory Stop |
+
+<br /><br />
+* Inventory Start
+
+> Tag 의 Data 를  연속적으로 읽어오는 명령어 
+
+> 리더는 Inventory Start 실행하여 Tag 가 Detect 되었을 경우 응답을 한다.
+
+##### Inventory Start Command
+
+| No. | Header | Command Code | Trailer | 
+|:--------|:--------:|:--------:|:--------:|
+| Length(byte) | 1 | 1 | 2 | 
+| Hex | 0x3E | 0x66 | 0x0D 0x0A |
+| ASCII | > | f | \r\n |
+
+```
+ex) >f\r\n 
+```
+
+##### Data Reply
+
+| No. | Header | Reply Code | Data | Checksum | Trailer | 
+|:--------|:--------:|:--------:|:--------:|:--------:|:--------:|
+| Length(byte) | 1 | 1 | variable | 2 | 2 |
+| Hex | 0x3E | 0x54 |  | | 0x0D 0x0A | 
+| ASCII | > | T | | | \r\n |
+
+```
+※ Checksum 은 Data 필드를 1byte 씩 Exclusive OR(^) 한 값의 Ascii 변환한 값이다.
+
+ Ex) Data : 0x30^0x31^0x32^0x33^0x34 = 0x34 이므로 Ascii 로 변환하면 ’3’(0x33), ’4’(0x34) 2byte 가 된다
+```
+
+
+
+
+
+
