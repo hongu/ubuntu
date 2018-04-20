@@ -127,17 +127,16 @@ ex) >w 3F13DA3300000000\r\n
 
 | No. | Code(ASCII) | Code(HEX) | Name | 
 |:--------|:--------:|:--------:|:--------:|
-| 1 | f | 0x66 | Inventory Start | 
+| 1 | f | 0x66 | Inventory | 
 | 2 | r | 0x72 | Memory Read | 
 | 3 | w | 0x77 | Memory Write | 
 | 4 | s | 0x73 | Inventory Stop |
 
 <br /><br />
-* Inventory Start
+* Inventory 
 
 > Tag 의 Data 를  연속적으로 읽어오는 명령어 
-
-> 리더는 Inventory Start 실행하여 Tag 가 Detect 되었을 경우 응답을 한다.
+> 리더는 Inventory 실행하여 Tag 가 Detect 되었을 경우 응답을 한다.
 
 ##### Inventory Start Command
 
@@ -165,8 +164,58 @@ ex) >f\r\n
  Ex) Data : 0x30^0x31^0x32^0x33^0x34 = 0x34 이므로 Ascii 로 변환하면 ’3’(0x33), ’4’(0x34) 2byte 가 된다
 ```
 
+<br /><br />
+
+* Memory Read
+
+> Tag 의 Data를  한번만 읽어오는 명령어 
+> Data Replay는  Inventory 동일
+
+##### Memory Read Command
+
+| No. | Header | Command Code | Trailer | 
+|:--------|:--------:|:--------:|:--------:|
+| Length(byte) | 1 | 1 | 2 | 
+| Hex | 0x3E | 0x66 | 0x0D 0x0A |
+| ASCII | > | r | \r\n |
 
 
+* Memory Write
+
+> Tag 의 Memory 를 직접 Access 하여 Write 하기 위한 명령어
+
+##### Memory Write Command
+
+| No. | Header | Command Code | Data | Trailer | 
+|:--------|:--------:|:--------:|:--------:|:--------:|
+| Length(byte) | 1 | 1 | Variable | 2 | 
+| Hex | 0x3E | 0x66 | |0x0D 0x0A |
+| ASCII | > | r | | \r\n |
+
+##### Data Reply
+
+> 응답은 Write한 데이터를 반환
+
+| No. | Header | Reply Code | Data | Trailer | 
+|:--------|:--------:|:--------:|:--------:|:--------:|
+| Length(byte) | 1 | 1 | variable | 2 | 2 |
+| Hex | 0x3E | 0x43 |  | 0x0D 0x0A | 
+| ASCII | > | C | | \r\n |
 
 
+<br /><br />
+* Inventory Stop
 
+> 실행된 Inventory를 중지 시킨다.
+
+##### Inventory Start Command
+
+| No. | Header | Command Code | Trailer | 
+|:--------|:--------:|:--------:|:--------:|
+| Length(byte) | 1 | 1 | 2 | 
+| Hex | 0x3E | 0x73| 0x0D 0x0A |
+| ASCII | > | s | \r\n |
+
+```
+ex) >s\r\n 
+```
