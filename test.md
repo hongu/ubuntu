@@ -1,4 +1,7 @@
-## RFID Protocol ##
+# RFID Protocol #
+
+  <img src="https://github.com/hongu/etc/blob/master/struct.png" width="500" height="500">
+
 
 <br /><br />
 **1. PACKET FORMAT**
@@ -15,7 +18,7 @@
 **2. PACKET CONNECTION**
 ----------
 > 리더 연결 확인을 위한 패킷   
-* 연결확인 요청 ( Host -> Reader )  
+* Connection Confirm Command (Host -> Reader )
 
 |      | Header | Command Code | Trailer |
 |:--------|:--------:|:--------:|:--------:|
@@ -23,7 +26,7 @@
 | HEX | 0x3E | 0x63 | 0x0D 0x0A | 
 | ASCII | > | c | \r \n |
 
-* 연결확인 응답 ( Reader -> Host  )
+* Connection Reply ( Reader -> Host )
 
 |      | Header | Command Code | Trailer |
 |:--------|:--------:|:--------:|:--------:|
@@ -188,21 +191,29 @@ ex) >f\r\n
 
 ##### Memory Write Command
 
-| No. | Header | Command Code | Data | Trailer | 
-|:--------|:--------:|:--------:|:--------:|:--------:|
-| Length(byte) | 1 | 1 | Variable | 2 | 
-| Hex | 0x3E | 0x66 | |0x0D 0x0A |
-| ASCII | > | r | | \r\n |
+| No. | Header | Command Code | SP | Data | Trailer | 
+|:--------|:--------:|:--------:|:--------:|:--------:|:--------:|
+| Length(byte) | 1 | 1 | 1 | Variable | 2 | 
+| Hex | 0x3E | 0x77 | | |0x0D 0x0A |
+| ASCII | > | w | | | \r\n |
+
+```
+ex) >w 3F13DA3300000000\r\n
+```
 
 ##### Data Reply
 
 > 응답은 Write한 데이터를 반환
 
-| No. | Header | Reply Code | Data | Trailer | 
-|:--------|:--------:|:--------:|:--------:|:--------:|
-| Length(byte) | 1 | 1 | variable | 2 | 2 |
-| Hex | 0x3E | 0x43 |  | 0x0D 0x0A | 
-| ASCII | > | C | | \r\n |
+| No. | Header | Command Code | SP | Data | Trailer | 
+|:--------|:--------:|:--------:|:--------:|:--------:|:--------:|
+| Length(byte) | 1 | 1 | 1 | Variable | 2 | 
+| Hex | 0x3E | 0x43 | | | 0x0D 0x0A | 
+| ASCII | > | C | | | \r\n |
+
+```
+ex) >C 3F13DA3300000000\r\n
+```
 
 
 <br /><br />
