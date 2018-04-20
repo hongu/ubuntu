@@ -136,6 +136,7 @@ ex) >w 3F13DA3300000000\r\n
 * Inventory 
 
 > Tag 의 Data 를  연속적으로 읽어오는 명령어 
+
 > 리더는 Inventory 실행하여 Tag 가 Detect 되었을 경우 응답을 한다.
 
 ##### Inventory Start Command
@@ -169,7 +170,8 @@ ex) >f\r\n
 * Memory Read
 
 > Tag 의 Data를  한번만 읽어오는 명령어 
-> Data Replay는  Inventory 동일
+
+> Data Replay는  Inventory 와 동일
 
 ##### Memory Read Command
 
@@ -179,7 +181,7 @@ ex) >f\r\n
 | Hex | 0x3E | 0x66 | 0x0D 0x0A |
 | ASCII | > | r | \r\n |
 
-
+<br /><br />
 * Memory Write
 
 > Tag 의 Memory 를 직접 Access 하여 Write 하기 위한 명령어
